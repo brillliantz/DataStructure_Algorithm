@@ -1,4 +1,10 @@
-public class Example {
+package src.com.algoSedgewick;
+
+/**
+ * Created by Bingn on 9/21/2016.
+ */
+/*
+public class sortClass {
     public static void sort(Comparable[] a) {
 
     }
@@ -20,3 +26,4 @@ public class Example {
         StdOut.println();
     }
 }
+*/
