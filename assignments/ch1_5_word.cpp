@@ -5,7 +5,7 @@ bool IsPalindrom_slave(char *h, char *t);
 bool IsPalindrom_master(char* s);
 
 int main() {
-    char arr[] = "wabccbaw";
+    char arr[] = "wabcnyncbaw";
     if (IsPalindrom_master(&arr[0])) {
         cout << "yes" << endl;
     }
@@ -18,7 +18,6 @@ bool IsPalindrom_master(char* s) {
     while (*(tail+1)) {
         ++tail;
     }
-    cout << *head << *tail << endl;
     return IsPalindrom_slave(head, tail);
 
 }

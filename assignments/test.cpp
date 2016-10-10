@@ -6,7 +6,7 @@ int main() {
     char c[5] = "what";
     char *p = &c[0];
     for (int i = 0; i < 5; ++i) {
-        cout << p[i] << endl;
+        cout << char(p[i] - ('a' - 'A')) << endl;
     }
     cout << *p << endl;
 
