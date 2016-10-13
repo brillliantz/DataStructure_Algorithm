@@ -1,40 +1,35 @@
 #include <iostream>
 using namespace std;
 
-void hanoi(int n,char x,char y)
-{
-	if (n==1)
-	cout <<x<<"->"<<y<<endl;
-	else
-	{
-		char z;
-		switch ((int)(x+y))
-		{
-			case 65+66:
-				z=67;
-				break;
-			case 66+67:
-				z=65;
-				break;
-			case 65+67:
-				z=66;
-				break;
-		}
+void hanoi(int n, char from, char to, char aux);
 
-		hanoi(n-1,x,z);
-		cout <<x<<"->"<<y<<endl;
-		hanoi(n-1,z,y);
-	}
-}
 int main()
 {
-	int n;
-	char x,y;
+	int num_of_disks;
+	char from = 'A', to = 'B', aux = 'C';
     cout << "input how many pieces: " << endl;
-    cin >> n;
-    cout << "Assume origin is A and target is B, then steps are: " << endl;
-    x = 'A';
-    y = 'B';
-	hanoi(n,x,y);
+    cin >> num_of_disks;
 
+    cout << "Assume origin is A, target is B and auxiliary is C, ";
+    cout << "then steps are: " << endl;
+    hanoi(num_of_disks, from, to, aux);
+
+}
+
+void hanoi(int n, char from, char to, char aux) {
+    static int count = 0;
+    if (n==1) {
+        count += 1;
+        cout << count << ". ";
+        cout << "move the " << n << "th small disk from ";
+        cout << "from " << from <<" to "<< to << endl;
+    }
+    else {
+        hanoi(n-1, from, aux, to);
+        count += 1;
+        cout << count << ". ";
+        cout << "move the " << n << "th small disk from ";
+        cout << "from " << from <<" to "<< to << endl;
+        hanoi(n-1, aux, to, from);
+    }
 }
