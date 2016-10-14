@@ -171,21 +171,18 @@ $$
 ```c++
 int x = 91, y = 100;
 while(y>0) {
-    if(x>100) { x -= 10; y--; }    \\ this line
-    else x++;                      \\ this line
+    if(x>100) { x -= 10; y--; }    \\ line #1
+    else x++;                      \\ line #2
 }
 ```
 
-d
-```c++
-int x = 91, y = 100;
-for (y = 100; y > 0; y--) {
-    if (x > 100) 
-```
-$$
+loop:
+`x` = 91:101:1, `line #2` excuted 10 times;
+`x` -= 10, `y` -= 1, `line #1` excuted 1 time;
 
+each loop, `y` decreases by 1. So this loop will be excuted 100 times.
 
-
+In total, `line #1` is excuted 100 times, `line #2` is excuted 1000 times.
 
 # test
 
