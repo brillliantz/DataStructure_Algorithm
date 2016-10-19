@@ -8,8 +8,8 @@ class Node
         Node *next;
         Node *before;
     public:
-        Node(int value);
-}
+        explicit Node(int value = 0);
+};
 
 class LinkedList
 {
@@ -18,12 +18,12 @@ class LinkedList
         int length;
 
     public:
-        LinkedList();
+        explicit LinkedList();
         ~LinkedList();
 
         /*
          * methods
          */
-}
+};
 
 #endif
