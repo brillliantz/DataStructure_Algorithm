@@ -31,6 +31,10 @@
 *.out
 *.app
 
+#----------------- lines below are added by BingnanLIU
 # pdf & html
 *.pdf
 *.html
+
+# java foler
+./src/
