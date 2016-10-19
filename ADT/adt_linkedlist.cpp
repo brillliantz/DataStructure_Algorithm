@@ -3,21 +3,17 @@
 
 using namespace std;
 
-Node::Node(int value) {
-    this->data = value;
-    this->next = nullptr;
-    this->before = nullptr;
-}
+Node::Node(int value) :
+    data{value}, next{nullptr}, before{nullptr}
+{ }
 
-LinkedList::LinkedList()
-{
-    this->length = 0;
-    this->head = nullptr;
-}
+LinkedList::LinkedList() :
+    length{0}, head{nullptr}, tail{nullptr}
+{ }
 
 LinkedList::~LinkedList()
 {
-    ;
+    cout << "\nPrinting in the destructor func. (do nothing)"<<endl;
 }
 
 int LinkedList::size() const
@@ -32,6 +28,7 @@ bool LinkedList::empty() const
 
 void LinkedList::print() const
 {
+    cout << "------Now printing all data in the linkedlist------" << endl;
     for (Node *ptr = this->head; ptr != nullptr; ptr = ptr->next)
     {
         cout << ptr->data << ", ";
@@ -41,20 +38,20 @@ void LinkedList::print() const
 
 void LinkedList::append(int value)
 {
-    if (this->head == nullptr)
+    if (this->empty())
     {
         Node *node = new Node(value);
         this->head = node;
     }
     else
     {
-        Node *tail;
-        for (tail = this->head; tail != nullptr; tail = tail->next)
+        Node *ptr;
+        for (ptr = this->head; ptr->next != nullptr; ptr = ptr->next)
         {
             ;
         }
         Node *node = new Node(value);
-        tail->next = node;
+        ptr->next = node;
     }
     ++(this->length);
 }

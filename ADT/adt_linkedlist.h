@@ -7,21 +7,25 @@ class Node {
         Node *next;
         Node *before;
     public:
-        Node(int value);
+        explicit Node(int value);
 };
 
 class LinkedList {
     private:
-        Node *head;
+        Node *head = nullptr;
+        Node *tail = nullptr;
         int length;
 
     public:
-        LinkedList();
-        //~LinkedList();
+        explicit LinkedList();
+        ~LinkedList();
         int size() const;
-        //bool empty() const;
+        bool empty() const;
         void print() const;
         void append(int value);
+        /*
+         * methods
+         */
 };
 
 #endif
