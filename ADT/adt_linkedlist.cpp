@@ -3,8 +3,7 @@
 
 using namespace std;
 
-Node::Node(int value)
-{
+Node::Node(int value) {
     this->data = value;
     this->next = nullptr;
     this->before = nullptr;
@@ -13,7 +12,7 @@ Node::Node(int value)
 LinkedList::LinkedList()
 {
     this->length = 0;
-    this->head = nullptr:
+    this->head = nullptr;
 }
 
 LinkedList::~LinkedList()
@@ -28,14 +27,14 @@ int LinkedList::size() const
 
 bool LinkedList::empty() const
 {
-    return (this->length == 0)
+    return (this->length == 0);
 }
 
 void LinkedList::print() const
 {
     for (Node *ptr = this->head; ptr != nullptr; ptr = ptr->next)
     {
-        cout << ptr->data << ", "
+        cout << ptr->data << ", ";
     }
     cout << endl;
 }
