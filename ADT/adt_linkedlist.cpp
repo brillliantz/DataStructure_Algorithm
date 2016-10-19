@@ -56,3 +56,15 @@ void LinkedList::append(int value)
     ++(this->length);
 }
 
+void LinkedList::structure() const
+{
+    cout << "------Now printing the structure of the LinkedList------" << endl;
+
+    int count = 0;
+    for (Node *p = this->head; p != nullptr; p = p->next)
+    {
+        cout << count << ". " << p->data << "@[" << p << "] --> ";
+        if (count % 7 == 6) cout << endl;
+        ++count;
+    }
+}

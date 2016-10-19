@@ -23,6 +23,7 @@ class LinkedList {
         bool empty() const;
         void print() const;
         void append(int value);
+        void structure() const;
         /*
          * methods
          */

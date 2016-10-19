@@ -20,5 +20,7 @@ int main()
         cout << endl;
     }
 
+    mylist.structure();
+
 
 }
