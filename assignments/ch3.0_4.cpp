@@ -1,11 +1,13 @@
+#include "../ADT/adt_linkedlist.h"
 
 
-
-Node *Reverse(Node *head) {
-
-Node *left, *mid, *right;
-left = nullptr;
-mid = head;
+Node *Reverse(Node *head)
+{
+    /* reverse the whole linked list, then return the new head node
+     */
+    Node *left, *mid, *right;
+    left = nullptr;
+    mid = head;
 
     while (mid != nullptr) {
         // left->next is set in last loop

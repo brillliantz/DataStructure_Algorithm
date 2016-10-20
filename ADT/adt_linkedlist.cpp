@@ -26,6 +26,19 @@ bool LinkedList::empty() const
     return (this->length == 0);
 }
 
+void LinkedList::clear()
+{
+    Node *p1 = this->head;
+    Node *p2 = p1->next;
+    while (p2)
+    {
+        delete p1;
+        p1 = p2;
+        p2 = p1->next;
+    }
+    this->head = nullptr;
+}
+
 void LinkedList::print() const
 {
     cout << "------Now printing all data in the linkedlist------" << endl;
@@ -36,7 +49,7 @@ void LinkedList::print() const
     cout << endl;
 }
 
-void LinkedList::append(int value)
+void LinkedList::push_back(int value)
 {
     if (this->empty())
     {
@@ -45,20 +58,44 @@ void LinkedList::append(int value)
     }
     else
     {
-        Node *ptr;
-        for (ptr = this->head; ptr->next != nullptr; ptr = ptr->next)
-        {
-            ;
-        }
+        //Node *ptr;
+        //for (ptr = this->head; ptr->next != nullptr; ptr = ptr->next)
+        //{
+        //    ;
+        //}
+        //Node *node = new Node(value);
+        //ptr->next = node;
         Node *node = new Node(value);
-        ptr->next = node;
+        this->tail->next = node;
+        this->tail = node;
     }
     ++(this->length);
 }
 
+void LinkedList::push_front(int value)
+{
+    Node *node = new Node(value);
+    node->next = this->head;
+    this->head->before = node;
+    this->head = node;
+}
+void LinkedList::pop_front()
+{
+    Node *p = this->head;
+    this->head = this->head->next;
+    this->head->next->before = nullptr;
+    delete p;
+}
+
+int LinkedList::front() const
+{
+    return this->head->data;
+}
+
 void LinkedList::structure() const
 {
-    cout << "------Now printing the structure of the LinkedList------" << endl;
+    cout << "======Now printing the structure of the LinkedList"
+         << ", structure format is #. data@[address]" << endl;
 
     int count = 0;
     for (Node *p = this->head; p != nullptr; p = p->next)
@@ -67,4 +104,19 @@ void LinkedList::structure() const
         if (count % 7 == 6) cout << endl;
         ++count;
     }
+    cout << "nullptr" << endl << endl;
+}
+
+Node *LinkedList::at(int n) const
+{
+    if (n > this->length) return nullptr;
+
+    int i = 0;
+    Node *p = this->head;
+    while (i != n)
+    {
+        p = p->next;
+        ++i;
+    }
+    return p;
 }
