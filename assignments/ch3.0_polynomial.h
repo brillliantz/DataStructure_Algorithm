@@ -1,29 +1,41 @@
-class Term
-{
-  public:
-    int exp;
-    double coef;
-    Term *next;
-    Term *prev;
-    Term(const double &c, const int &e, Term *n = nullptr, Term* p = nullptr);
-};
+const double COEF_PRECISION = 1E-8;
+
 
 class Polynomial {
+    private:
+        struct Term
+        {
+            int exp;
+            double coef;
+            Term *next;
+            Term *prev;
+            Term(const double c, const int e, Term *n = nullptr, Term* p = nullptr);
+        };
+
     private:
         Term *head;
         Term *tail;
         int length;
 
-    private:
-        void push_front(const double &c, const int &e);
-        bool empty() const;
     public:
         Polynomial();
-        void insert(const double &c, const int &e);
         void zero();
-        Term *begin() const;
-        Term *end() const;
-        Polynomial *operator+(Polynomial &rhs);
-        Polynomial *operator*(Polynomial &rhs);
+
+        bool empty() const {return (length == 0);}
+
+        Term *begin() const {return head->next;}
+        Term *end() const {return tail;}
+
+        void insert(const double &c, const int &e);
+
+        Polynomial &operator+(Polynomial &rhs);
+        Polynomial &operator+(Polynomial &&rhs);
+        Polynomial &operator*(Polynomial &rhs);
+        Polynomial &operator*(Polynomial &&rhs);
+
         void print() const;
+
+    private:
+        //Term *InsertAt(Term *pos, Term &x);
+        Term *EraseAt(Term *pos);
 };
