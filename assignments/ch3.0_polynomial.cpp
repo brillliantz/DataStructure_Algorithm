@@ -63,25 +63,61 @@ Polynomial::Term *Polynomial::EraseAt(Term *pos) {
     --length;
     return t;
 }
-Polynomial *Polynomial::operator+(Polynomial &rhs) {
-    for (Term *pl = this->head; pl; pl = pl->next) {
-        for (Term *pr = rhs.head; pr; pr = pr->next) {
-            if (pr->exp < pl->exp) {
-                break;
-            }
-            else if (pr->exp == pl->exp) {
+//Polynomial *Polynomial::operator+(Polynomial &rhs) {
+//    for (Term *pl = this->head; pl; pl = pl->next) {
+//        for (Term *pr = rhs.head; pr; pr = pr->next) {
+//            if (pr->exp < pl->exp) {
+//                break;
+//            }
+//            else if (pr->exp == pl->exp) {
+//
+//            }
+//            rhs.head = pr;
+//        }
+//        rhs.head = nullptr;
+//        rhs.tail = nullptr;
+//        rhs.length = 0;
+//    }
+//}
 
-            }
-            rhs.head = pr;
+Polynomial *Polynomial::add(Polynomial *rhs) {
+    Polynomial *lhs = this;
+    Polynomial *res = new Polynomial;
+    Term *p1 = lhs->begin(), *p2 = rhs->begin(), *tail = res->head;
+    while (p1 != lhs->end() && p2 != rhs->end()) {
+        if (p1->exp > p2->exp) {
+            tail->next = p1;
+            p1 = p1->next;
+            ++res->length;
+            tail = tail->next;
         }
-        rhs.head = nullptr;
-        rhs.tail = nullptr;
-        rhs.length = 0;
+        else if (p1->exp < p2->exp) {
+            tail->next = p2;
+            p2 = p2->next;
+            ++res->length;
+            tail = tail->next;
+        }
+        else {
+            if ((p1->coef + p2->coef) < COEF_PRECISION) {
+                p1 = p1->next;
+                p2 = p2->next;
+            }
+            else {
+                p1->coef += p2->coef;
+                tail->next = p1;
+                p1 = p1->next;
+                p2 = p2->next;
+                ++res->length;
+                tail = tail->next;
+            }
+        }
     }
-}
-
-Polynomial &Polynomial::operator*(Polynomial &rhs) {
-    ;
+    tail->next = (p1 == lhs->end()) ? p2 : p1;
+    while (tail->next->next) {
+        tail = tail->next;
+    }
+    tail->next = res->end();
+    return res;
 }
 
 void Polynomial::print() const {

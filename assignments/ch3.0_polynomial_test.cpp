@@ -22,4 +22,15 @@ int main() {
     poly1.insert(-3, 4);
     poly1.insert(-15.3, 7);
     poly1.print();
+
+    Polynomial poly2 = Polynomial{};
+    for (int i = 2; i < 10; ++i) {
+        poly2.insert(2*i+1.1, 2*i);
+    }
+    poly2.insert(-19.3, 9);
+    poly2.print();
+
+    std::cout << "\nNow test function add" << std::endl;
+    Polynomial *sum = poly1.add(&poly2);
+    sum->print();
 }

@@ -28,10 +28,11 @@ class Polynomial {
 
         void insert(const double &c, const int &e);
 
-        Polynomial &operator+(Polynomial &rhs);
-        Polynomial &operator+(Polynomial &&rhs);
-        Polynomial &operator*(Polynomial &rhs);
-        Polynomial &operator*(Polynomial &&rhs);
+        Polynomial *add(Polynomial *rhs);
+        //Polynomial &operator+(Polynomial &rhs);
+        //Polynomial &operator+(Polynomial &&rhs);
+        //Polynomial &operator*(Polynomial &rhs);
+        //Polynomial &operator*(Polynomial &&rhs);
 
         void print() const;
 
@@ -39,3 +40,5 @@ class Polynomial {
         //Term *InsertAt(Term *pos, Term &x);
         Term *EraseAt(Term *pos);
 };
+
+//Polynomial *add(Polynomial *lhs, Polynomial *rhs);
