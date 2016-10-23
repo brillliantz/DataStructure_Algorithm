@@ -5,9 +5,9 @@ class Node {
     public:
         int data;
         Node *next;
-        Node *before;
+        Node *prev;
     public:
-        explicit Node(int value);
+        explicit Node(int value, Node *n = nullptr, Node *p = nullptr);
 };
 
 class LinkedList {
@@ -20,20 +20,22 @@ class LinkedList {
         Node *head = nullptr;
         explicit LinkedList();
         ~LinkedList();
-        int size() const;
-        bool empty() const;
-        void clear();
+
+        int size() const {return length;};
+        bool empty() const {return (length == 0);}
+
+        Node *begin() const {return head->next;}
+        Node *end() const {return tail;}
+
+        int front() const {return head->data;}
         void print() const;
 
         void push_back(int value);
         void push_front(int value);
-        void pop_front();
-        int front() const;
+        int pop_front();
+        void clear();
         void structure() const;
         Node *at(int n) const;
-        /*
-         * methods
-         */
 };
 
 #endif

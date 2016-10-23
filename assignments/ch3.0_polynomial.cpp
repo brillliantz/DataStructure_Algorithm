@@ -33,7 +33,7 @@ void Polynomial::insert(const double &c, const int &e) {
                 break;
             }
             else if (e == t->exp) {
-                if (fabs(c - t->coef) < COEF_PRECISION) {
+                if (fabs(c + t->coef) < COEF_PRECISION) {
                     EraseAt(t);
                 }
                 else {
@@ -63,32 +63,32 @@ Polynomial::Term *Polynomial::EraseAt(Term *pos) {
     --length;
     return t;
 }
-//Polynomial *Polynomial::operator+(Polynomial &rhs) {
-//    for (Term *pl = this->head; pl; pl = pl->next) {
-//        for (Term *pr = rhs.head; pr; pr = pr->next) {
-//            if (pr->exp < pl->exp) {
-//                break;
-//            }
-//            else if (pr->exp == pl->exp) {
-//
-//            }
-//            rhs.head = pr;
-//        }
-//        rhs.head = nullptr;
-//        rhs.tail = nullptr;
-//        rhs.length = 0;
-//    }
-//}
+Polynomial *Polynomial::operator+(Polynomial &rhs) {
+    for (Term *pl = this->head; pl; pl = pl->next) {
+        for (Term *pr = rhs.head; pr; pr = pr->next) {
+            if (pr->exp < pl->exp) {
+                break;
+            }
+            else if (pr->exp == pl->exp) {
+
+            }
+            rhs.head = pr;
+        }
+        rhs.head = nullptr;
+        rhs.tail = nullptr;
+        rhs.length = 0;
+    }
+}
 
 Polynomial &Polynomial::operator*(Polynomial &rhs) {
     ;
 }
 
 void Polynomial::print() const {
-    std::cout << "Printing the polynomial:" << std::endl;
-    std::cout << "===" << head << ", " << head->next << ", "
-        << begin() << ", " << head->next->next << ", " << end() << std::endl;
-
+    std::cout << "[Printing the polynomial:]" << std::endl;
+//    check whether the address is correct:
+//    std::cout << "===" << head << ", " << head->next << ", "
+//        << begin() << ", " << head->next->next << ", " << end() << std::endl;
     if (empty()) std::cout << "It is empty now." << std::endl;
     else {
         Term *t = begin();

@@ -3,46 +3,27 @@
 
 using namespace std;
 
-Node::Node(int value) :
-    data{value}, next{nullptr}, before{nullptr}
+Node::Node(int value, Node *n, Node *p) :
+    data{value}, next{n}, prev{p}
 { }
 
 LinkedList::LinkedList() :
-    length{0}, head{nullptr}, tail{nullptr}
-{ }
+    length{0} {
+        head = new Node(0);
+        tail = new Node(0);
+        head->next = tail;
+        tail->prev = head;
+    }
 
 LinkedList::~LinkedList()
 {
     cout << "\nPrinting in the destructor func. (do nothing)"<<endl;
 }
 
-int LinkedList::size() const
-{
-    return this->length;
-}
-
-bool LinkedList::empty() const
-{
-    return (this->length == 0);
-}
-
-void LinkedList::clear()
-{
-    Node *p1 = this->head;
-    Node *p2 = p1->next;
-    while (p2)
-    {
-        delete p1;
-        p1 = p2;
-        p2 = p1->next;
-    }
-    this->head = nullptr;
-}
-
 void LinkedList::print() const
 {
-    cout << "------Now printing all data in the linkedlist------" << endl;
-    for (Node *ptr = this->head; ptr != nullptr; ptr = ptr->next)
+    cout << "=-Now printing all data in the linkedlist:" << endl;
+    for (Node *ptr = begin(); ptr != end(); ptr = ptr->next)
     {
         cout << ptr->data << ", ";
     }
@@ -51,50 +32,38 @@ void LinkedList::print() const
 
 void LinkedList::push_back(int value)
 {
-    if (this->empty())
-    {
-        Node *node = new Node(value);
-        this->head = node;
-    }
-    else
-    {
-        //Node *ptr;
-        //for (ptr = this->head; ptr->next != nullptr; ptr = ptr->next)
-        //{
-        //    ;
-        //}
-        //Node *node = new Node(value);
-        //ptr->next = node;
-        Node *node = new Node(value);
-        this->tail->next = node;
-        this->tail = node;
-    }
+    Node *node = new Node(value, tail, tail->prev);
+    tail->prev = tail->prev->next = node;
     ++(this->length);
 }
 
 void LinkedList::push_front(int value)
 {
-    Node *node = new Node(value);
-    node->next = this->head;
-    this->head->before = node;
-    this->head = node;
+    Node *node = new Node(value, head->next, head);
+    head->next = head->next->prev = node;
+    ++length;
 }
-void LinkedList::pop_front()
+int LinkedList::pop_front()
 {
-    Node *p = this->head;
-    this->head = this->head->next;
-    this->head->next->before = nullptr;
+    Node *p = begin();
+    int data = p->data;
+    head = p->next;
+    p->next->prev = head;
     delete p;
+    --length;
+    return data;
 }
 
-int LinkedList::front() const
+void LinkedList::clear()
 {
-    return this->head->data;
+    while(!empty()) {
+        pop_front();
+    }
 }
 
 void LinkedList::structure() const
 {
-    cout << "======Now printing the structure of the LinkedList"
+    cout << "=-Now printing the structure of the LinkedList"
          << ", structure format is #. data@[address]" << endl;
 
     int count = 0;
@@ -104,7 +73,7 @@ void LinkedList::structure() const
         if (count % 7 == 6) cout << endl;
         ++count;
     }
-    cout << "nullptr" << endl << endl;
+    cout << "nullptr" << endl;
 }
 
 Node *LinkedList::at(int n) const
@@ -112,7 +81,7 @@ Node *LinkedList::at(int n) const
     if (n > this->length) return nullptr;
 
     int i = 0;
-    Node *p = this->head;
+    Node *p = begin();
     while (i != n)
     {
         p = p->next;

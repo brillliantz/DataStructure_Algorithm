@@ -13,7 +13,8 @@ void Swap(Node *head, Node *x1) {
 
     if (x1 == head)
     {
-        //TODO here we have to modify "head" of the linked list. But we are unable to.
+        //TODO if the LinkedList does not have a header node, then
+        //we have to modify "head" of the linked list.
         x1->next = x2->next;
         x2->next = x1;
     }
