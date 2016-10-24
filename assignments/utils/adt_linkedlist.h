@@ -19,7 +19,6 @@ class LinkedList {
     public:
         Node *head = nullptr;
         explicit LinkedList();
-        ~LinkedList();
 
         int size() const {return length;};
         bool empty() const {return (length == 0);}

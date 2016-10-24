@@ -1,3 +1,7 @@
+/*  Implement Josephus(n, m) using circular linked list
+ *  the circular linked list is implemented based on stl::list
+ */
+
 #include <iostream>
 #include <list>
 using namespace std;

@@ -1,10 +1,11 @@
-#include "../ADT/adt_linkedlist.h"
+/* reverse the whole linked list, then return
+ * the head node of the new list.
+ */
 
+#include "./utils/adt_linkedlist.h"
 
 Node *Reverse(Node *head)
 {
-    /* reverse the whole linked list, then return the new head node
-     */
     Node *left, *mid, *right;
     left = nullptr;
     mid = head;

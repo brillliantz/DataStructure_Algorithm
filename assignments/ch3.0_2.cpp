@@ -1,3 +1,7 @@
+/*  return the intersection of
+ *  two sorted singly linked list.
+ *  using stl::list
+*/
 #include <list>
 using namespace std;
 

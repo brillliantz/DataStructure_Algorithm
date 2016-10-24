@@ -2,7 +2,7 @@ CC = g++
 CFLAGS = -std=c++11 -c
 LFLAGS = -Wall
 OBJS = ch3.0_polynomial.o ch3.0_polynomial_test.o
-TARGET = test_poly
+TARGET = test_poly.out
 
 $(TARGET): $(OBJS)
 	$(CC) $(LFLAGS) $(OBJS) -o $(TARGET)
