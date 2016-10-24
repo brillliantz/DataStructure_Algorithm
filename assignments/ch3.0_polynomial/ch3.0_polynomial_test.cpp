@@ -30,7 +30,8 @@ int main() {
     poly2.insert(-19.3, 9);
     poly2.print();
 
-    std::cout << "\nNow test function add" << std::endl;
+    std::cout << "\nNow test function add by adding two polys above: "
+        << std::endl;
     Polynomial *sum = poly1.add(&poly2);
     sum->print();
 }
