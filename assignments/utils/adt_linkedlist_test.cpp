@@ -1,27 +1,31 @@
 #include <iostream>
 #include "adt_linkedlist.h"
-#include "../assignments/ch3.0_1_singly.cpp"
-#include "../assignments/ch3.0_4.cpp"
-#include "../assignments/ch3.0_3_noSTL.cpp"
+#include "adt_linkedlist.cpp"
 
 using namespace std;
 
-void empty_test();
-void push_test(LinkedList *mylist, unsigned int n);
-void at_test(LinkedList *mylist);
+template <typename T>
+void empty_test(T dummy);
+
+template <typename T>
+void push_test(LinkedList<T> *mylist, unsigned int n);
+
+template <typename T>
+void at_test(LinkedList<T> *mylist);
 
 int main()
 {
-    LinkedList *mylist = new LinkedList;
+    LinkedList<int> *mylist = new LinkedList<int>;
 
-    empty_test();
+    empty_test(0);
 
     push_test(mylist, 2);
     //at_test(mylist);
 
 }
 
-void push_test(LinkedList *mylist, unsigned int n)
+template <typename T>
+void push_test(LinkedList<T> *mylist, unsigned int n)
 {
     std::cout << "------"
         << "member function [push_front] test" << std::endl;
@@ -40,18 +44,20 @@ void push_test(LinkedList *mylist, unsigned int n)
         << "member function [push_front] test complete.\n\n" << std::endl;
 }
 
-//void at_test(LinkedList *mylist)
+//template <typename T>
+//void at_test(LinkedList<int> *mylist)
 //{
 //    cout << "address of node #3 is " << mylist->at(3) << endl;
 //    cout << "address of node #2 is " << mylist->at(2) << endl;
 //}
 
-void empty_test()
+template <typename T>
+void empty_test(T dummy)
 {
     std::cout << "------"
         << "member function [emtpy] test" << std::endl;
-    std::cout << "first create a new LinkedList. " << std::endl;
-    LinkedList *mylist = new LinkedList;
+    std::cout << "first create a new LinkedList<int>. " << std::endl;
+    LinkedList<T> *mylist = new LinkedList<T>;
     cout << "Now the list is empty? " << mylist->empty() << endl;
     std::cout << "then insert one element. " << std::endl;
     mylist->push_front(15);
