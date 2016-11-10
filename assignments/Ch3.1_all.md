@@ -45,29 +45,37 @@ b. Remove the item stored at position p ( given by an iterator )
 
 #### Solution
 
+##### algorithm of a.
+1. insert a new node after position p, which is identical with the node at p
+2. use the node at position p to store the item x
+
+##### implementation of a.
 ```c++
 template<Typename T>
 void LinkedList<T>::insert(T x, iterator &p) {
-    Node *prev = begin(this).current;
     Node *cur = p.current; // itr.current is the pointer stored by the iterator
-    while (prev->next != cur) {
-        prev = prev->next;
-    }
-    prev->next = new Node(x, prev, cur); // using Node's construction function, 
-                                         // prototype: Node(T x, Node *prev, Node *next);
+	/* using Node's construction function, 
+     * prototype: Node(T x, Node *prev, Node *next);
+	 */
+	cur->next = new Node(*p, cur, cur->next);
+	*p = x;
 }
+```
 
+##### algorithm of b.
+1. copy the item from next node to current node (at position p)
+2. let the `next` pointer of current node point to the node next to the next
+
+##### implementation of b.
+```c++
 template<Typename T>
 void LinkedList<T>::remove(iterator &p) {
-    Node *prev = begin(this).current;
-    Node *cur = p.current; // itr.current is the pointer stored by the iterator
-    while (prev->next != cur) {
-        prev = prev->next;
-    }
-    prev->next = cur.next;
-    delete cur;
+	auto iterator p1 = p;
+	++p1;
+	*p = *p1;                            // copy
+	p.current->next = p1.current->next;  // change pointer
+	delete p1.current;                   // release memory
 }
-  
 ```
 
 ## 3.
@@ -79,20 +87,20 @@ void LinkedList<T>::remove(iterator &p) {
 1)
 ```c++
 int FrontNum(int rear, int length) {
-    return (rear < length)?(rear - length + m):(rear - length);
+    return (rear < length)?(rear - length + m + 1):(rear - length + 1);
 }
 ```
 
 2)
 ```c++
 template <typename T>
-bool QueueAr<T>::empty(int rear, int length) {
+bool QueueAr<T>::empty() const {
     return (length == 0);
 }
 
 template <typename T>
-bool QueueAr<T>::full(int rear, int length) {
-    return (!empty());
+bool QueueAr<T>::full() const {
+    return (length == m);
 }
 
 template <typename T>
