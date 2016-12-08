@@ -1,0 +1,9 @@
+digraph G {
+    null1, null2, null3 [label = "null"]
+    A -> B, F;
+    B -> E, C;
+    F -> null1, G;
+    C -> null2, D;
+    G -> H, J;
+    H -> null3, I;
+}

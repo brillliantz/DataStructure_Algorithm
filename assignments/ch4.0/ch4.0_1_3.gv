@@ -1,0 +1,19 @@
+digraph G {
+    grt1, grt2 [label = ">"]
+    ls1, ls2 [label = "<"]
+    or1, or2 [label = "||"]
+    and1 [label = "&&"]
+    plus1 [label = "+"]
+    minus1 [label = "-"]
+    or1 -> grt1, ls1;
+    grt1 -> plus1, minus1;
+    a1, a2 [label = "a"]
+    plus1 -> a1, b;
+    minus1 -> c, d;
+    ls1 -> a2, f;
+    and1 -> or1, or2;
+    or2 -> ls2, grt2;
+    y1, y2 [label = "y"]
+    ls2 -> x, y1;
+    grt2 -> y2, z;
+}

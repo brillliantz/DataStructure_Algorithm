@@ -8,7 +8,8 @@ int Precedence(char ch);
 string Infix2Postfix(string infix);
 
 int main() {
-    string infix2("m*(n/p*q-d*(g+x)+y)/z");
+    //string infix2("m*(n/p*q-d*(g+x)+y)/z");
+    string infix2("(a+b)/(c-d*e)+e+g*h/a");
     string postfix = Infix2Postfix(infix2);
     cout << "\nInfix expression:    " << infix2;
     cout << "\nPostfix expression:    " << postfix;

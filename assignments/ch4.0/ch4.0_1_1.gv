@@ -1,0 +1,19 @@
+digraph G {
+p2 [label="+"]
+e2 [label="e"]
+p2 -> "/", e2;
+
+"+" -> a, b;
+"/" -> "+", "-";
+"-" -> c, "*";
+"*" -> d, e;
+
+p3 [label="+"]
+d2 [label="/"]
+m2 [label="*"]
+a2 [label="a"]
+p3 -> p2, d2;
+d2 -> m2, a2;
+m2 -> g, h;
+
+}

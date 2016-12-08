@@ -1,0 +1,17 @@
+digraph G {
+    a1, a2, a3 [label = "1"]
+    a1 -> 5, 2;
+    5 -> a2, a3;
+
+    b1, b2, b3, b4, b5 [label = "1"]
+    c1, c2, c3 [label = "2"]
+    d1, d2 [label = "3"]
+    null1, null2 [label = "null"]
+    b1 -> b2, c1;
+    b2 -> b3, b4;
+    b4 -> null1, b5;
+    c1 -> c2, d1;
+    c2 -> null2, c3;
+    d1 -> d2, "^";
+
+}
