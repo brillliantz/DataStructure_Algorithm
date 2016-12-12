@@ -3,6 +3,7 @@
 
 #include <utility>
 #include <iostream>
+#include <iomanip>
 
 template <typename T>
 class BinaryTree {
@@ -31,6 +32,24 @@ class BinaryTree {
         std::cout << "\n====pre_order traversal complete." << std::endl;
     }
 
+    void in_order() const {
+        std::cout << "\n====in_order traversal: " << std::endl;
+        in_order(root);
+        std::cout << "\n====in_order traversal complete." << std::endl;
+    }
+
+    void post_order() const {
+        std::cout << "\n====post_order traversal: " << std::endl;
+        post_order(root);
+        std::cout << "\n====post_order traversal complete." << std::endl;
+    }
+
+    void pretty_print() const {
+        std::cout << "\n====pretty print: " << std::endl;
+        pretty_print(root);
+        std::cout << "====pretty print complete." << std::endl;
+    }
+
 
   private:
     struct BinaryNode {
@@ -51,7 +70,7 @@ class BinaryTree {
 
     void pre_order(BinaryNode *node) const {
         if (!node) {
-            std::cout << "nullptr" << ", ";
+            std::cout << "^" << ", ";
         }
         else {
             std::cout << node->data << ", ";
@@ -60,6 +79,44 @@ class BinaryTree {
         }
     }
 
+    void in_order(BinaryNode *node) const {
+        if (!node) {
+            std::cout << "^" << ", ";
+        }
+        else {
+            in_order(node->left);
+            std::cout << node->data << ", ";
+            in_order(node->right);
+        }
+    }
+
+    void post_order(BinaryNode *node) const {
+        if (!node) {
+            std::cout << "^" << ", ";
+        }
+        else {
+            post_order(node->left);
+            post_order(node->right);
+            std::cout << node->data << ", ";
+        }
+    }
+
+    /**
+     * postorder traversal in a pretty format
+     */
+    void pretty_print(BinaryNode *node, int indent=0) const {
+        if(!node) {
+            ;
+        }
+        else {
+            pretty_print(node->left, indent+4);
+            pretty_print(node->right, indent+4);
+            if (indent) {
+                std::cout << std::setw(indent) << ' ';
+            }
+            std::cout<< node->data << "\n";
+        }
+    }
 /**
  * Extra method functions that are not indispensable for the class:
  */
