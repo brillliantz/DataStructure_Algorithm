@@ -37,6 +37,8 @@ BinaryTree<char> *post_fix_to_tree(const std::string s) {
     std::stack<BinaryTree<char>> stk;
 
     for (const char &c : s) {
+        std::cout << stk.size() << std::endl;
+        std::cout << c << std::endl;
         if (is_operator(c)) {
             operand_right = stk.top();
             stk.pop();
@@ -56,6 +58,9 @@ BinaryTree<char> *post_fix_to_tree(const std::string s) {
             stk.push(tree);
         }
     }
+    std::cout << stk.size() << std::endl;
+    std::cout << &(stk.top()) << std::endl;
+    return &(stk.top());
 }
 
 bool is_operator(char c) {

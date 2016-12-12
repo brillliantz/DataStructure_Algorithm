@@ -2,6 +2,7 @@
 #define _BINARYTREE_H_
 
 #include <utility>
+#include <iostream>
 
 template <typename T>
 class BinaryTree {

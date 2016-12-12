@@ -10,7 +10,7 @@ $(TARGET): $(OBJS)
 ch4.0_BinaryTree.o: ch4.0_BinaryTree.h
 	$(CC) $(CFLAGS) ch4.0_BinaryTree.h
 
-ch4.0_postFix2Tree.o: ch4.0_BinaryTree.h
+ch4.0_postFix2Tree.o: ch4.0_BinaryTree.h ch4.0_postFix2Tree.cpp
 	$(CC) $(CFLAGS) ch4.0_postFix2Tree.cpp
 
 ch4.0_test.o: ch4.0_BinaryTree.h ch4.0_test.cpp
