@@ -38,3 +38,6 @@
 
 # java foler
 ./src/
+
+# pngs
+assignments/ch4.0/img/*.png
