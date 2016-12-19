@@ -8,7 +8,7 @@ class Node {
         Node<T> *next;
         Node<T> *prev;
     public:
-        explicit Node(T value, Node<T> *n = nullptr, Node<T> *p = nullptr);
+        Node(T value, Node<T> *n = nullptr, Node<T> *p = nullptr);
 };
 
 template <typename T>
@@ -39,4 +39,5 @@ class LinkedList {
         Node<T> *at(int n) const;
 };
 
+#include "adt_linkedlist.cpp"
 #endif

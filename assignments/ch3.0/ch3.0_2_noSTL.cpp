@@ -4,9 +4,10 @@
 */
 #include "./utils/adt_linkedlist.h"
 
-Node* Intersection_noSTL(Node* l1, Node* l2) {
-    Node *dummy = new Node(0);
-    Node *p1 = l1, *p2 = l2, *tail = dummy;
+template <typename T>
+Node<T>* Intersection_noSTL(Node<T>* l1, Node<T>* l2) {
+    Node<T> *dummy = new Node<T>(0);
+    Node<T> *p1 = l1, *p2 = l2, *tail = dummy;
 
     while (p1 && p2 ) {
         if (p1->data > p2->data) {

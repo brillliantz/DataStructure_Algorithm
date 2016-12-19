@@ -11,26 +11,31 @@
 #include "ch3.0_3_noSTL.cpp"
 
 
-void swap_test(LinkedList mylist, int n);
-void reverse_test(LinkedList mylist);
-void inter_test(LinkedList mylist, LinkedList yourlist);
-void union_test(LinkedList mylist, LinkedList yourlist);
-void PrintNode(Node *head);
+template <typename T>
+void swap_test(LinkedList<T> mylist, int n);
+template <typename T>
+void reverse_test(LinkedList<T> mylist);
+template <typename T>
+void inter_test(LinkedList<T> mylist, LinkedList<T> yourlist);
+template <typename T>
+void union_test(LinkedList<T> mylist, LinkedList<T> yourlist);
+template <typename T>
+void PrintNode(Node<T> *head);
 
 int main() {
-    LinkedList mylist;
+    LinkedList<int> mylist;
     for (int i = 1; i < 20; i+=2) mylist.push_back(i);
 
     reverse_test(mylist);
     swap_test(mylist, 2);
 
-    LinkedList yourlist;
+    LinkedList<int> yourlist;
     int prime[] = {2, 3, 5, 7, 11, 13, 17, 19};
     for (int i = 0; i < 8; ++i) yourlist.push_back(prime[i]);
 
-    LinkedList l1;
+    LinkedList<int> l1;
     for (int i = 1; i < 20; i+=2) l1.push_back(i);
-    LinkedList l2;
+    LinkedList<int> l2;
     for (int i = 0; i < 8; ++i) l2.push_back(prime[i]);
 
     std::cout << "first we print two lists to be merged: " << std::endl;
@@ -42,22 +47,26 @@ int main() {
 
 }
 
-void union_test(LinkedList mylist, LinkedList yourlist) {
+template <typename T>
+void union_test(LinkedList<T> mylist, LinkedList<T> yourlist) {
     std::cout << "Now we test the Union function. ";
-    Node *merge = Union_noSTL(mylist.begin(), yourlist.begin());
+    Node<T> *merge = Union_noSTL(mylist.begin(), yourlist.begin());
     std::cout << "result: "
         << "(the last 0 is the virtual tail, never mind)" << std::endl;
     PrintNode(merge);
 }
 
-void inter_test(LinkedList mylist, LinkedList yourlist) {
+template <typename T>
+void inter_test(LinkedList<T> mylist, LinkedList<T> yourlist) {
     std::cout << "Now we test the Intersection function. ";
-    Node *inter = Intersection_noSTL(mylist.begin(), yourlist.begin());
+    Node<T> *inter = Intersection_noSTL(mylist.begin(), yourlist.begin());
     std::cout << "result: "
         << "(the last 0 is the virtual tail, never mind)" << std::endl;
     PrintNode(inter);
 }
-void swap_test(LinkedList mylist, int n)
+
+template <typename T>
+void swap_test(LinkedList<T> mylist, int n)
 {
     std::cout << "------"
         << "function [swap for singly] test." << std::endl;
@@ -86,7 +95,8 @@ void swap_test(LinkedList mylist, int n)
         << "function [swap for doubly] test complete.\n\n" << std::endl;
 }
 
-void reverse_test(LinkedList mylist)
+template <typename T>
+void reverse_test(LinkedList<T> mylist)
 {
     std::cout << "------"
         << "function [reverse] test." << std::endl;
@@ -101,8 +111,9 @@ void reverse_test(LinkedList mylist)
 
 }
 
-void PrintNode(Node *head) {
-    Node *ptr = head;
+template <typename T>
+void PrintNode(Node<T> *head) {
+    Node<T> *ptr = head;
     while (ptr != nullptr) {
         std::cout << ptr->data << ", ";
         ptr = ptr->next;

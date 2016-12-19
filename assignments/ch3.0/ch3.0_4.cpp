@@ -4,9 +4,10 @@
 
 #include "./utils/adt_linkedlist.h"
 
-Node *Reverse(Node *head)
+template <typename T>
+Node<T> *Reverse(Node<T> *head)
 {
-    Node *left, *mid, *right;
+    Node<T> *left, *mid, *right;
     left = nullptr;
     mid = head;
 

@@ -6,11 +6,12 @@
 #include "./utils/adt_linkedlist.h"
 #include <stdexcept>
 
-void Swap(Node *head, Node *x1) {
-    Node *x2 = x1->next;
+template <typename T>
+void Swap(Node<T> *head, Node<T> *x1) {
+    Node<T> *x2 = x1->next;
     if (!x2)
         throw std::range_error("swap's param x1 can't be the tail.");
-    Node *left;
+    Node<T> *left;
 
     if (x1 == head)
     {

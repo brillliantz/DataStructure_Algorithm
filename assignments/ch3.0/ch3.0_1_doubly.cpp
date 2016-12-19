@@ -6,18 +6,19 @@
 #include "./utils/adt_linkedlist.h"
 #include <stdexcept>
 
-void Swap_doubly(Node *head, Node *x1) {
+template <typename T>
+void Swap_doubly(Node<T> *head, Node<T> *x1) {
     /**
      *  swap node x1 and the node after it in a
      *  singly linked list without exchanging their data
      */
-    Node *x2 = x1->next;
+    Node<T> *x2 = x1->next;
     if (!x2)
         throw std::range_error("LinkedList::swap's param x1 can't be the tail.");
 
     if (x1 == head)
     {
-        Node *right = x2->next;
+        Node<T> *right = x2->next;
         x2->prev = nullptr;
         x2->next = x1;
         x1->next = right;
@@ -25,7 +26,7 @@ void Swap_doubly(Node *head, Node *x1) {
     }
     else
     {
-        Node *left = x1->prev, *right = x2->next;
+        Node<T> *left = x1->prev, *right = x2->next;
 
         left->next = x2;
         right->prev = x1;

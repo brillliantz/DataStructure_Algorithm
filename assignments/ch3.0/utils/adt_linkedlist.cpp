@@ -1,5 +1,6 @@
+#ifdef ADT_LINKEDLIST_H
+
 #include <iostream>
-#include "adt_linkedlist.h"
 
 using namespace std;
 
@@ -97,3 +98,5 @@ Node<T> *LinkedList<T>::at(int n) const
     }
     return p;
 }
+
+#endif
