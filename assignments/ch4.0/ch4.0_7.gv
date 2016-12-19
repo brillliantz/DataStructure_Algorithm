@@ -1,0 +1,117 @@
+digraph G {
+    a [label="{{a|02}|}", shape=record];
+    b [label="{{b|03}|}", shape=record];
+    c [label="{{c|06}|}", shape=record];
+    d [label="{{d|09}|}", shape=record];
+    e [label="{{e|14}|}", shape=record];
+    f [label="{{f|15}|}", shape=record];
+    g [label="{{g|16}|}", shape=record];
+    h [label="{{h|17}|}", shape=record];
+}
+
+digraph G {
+    a [label="{{a|02}|}", shape=record];
+    b [label="{{b|03}|}", shape=record];
+    c [label="{{c|06}|}", shape=record];
+    d [label="{{d|09}|}", shape=record];
+    e [label="{{e|14}|}", shape=record];
+    f [label="{{f|15}|}", shape=record];
+    g [label="{{g|16}|}", shape=record];
+    h [label="{{h|17}|}", shape=record];
+    05 -> a, b;
+}
+
+digraph G {
+    a [label="{{a|02}|}", shape=record];
+    b [label="{{b|03}|}", shape=record];
+    c [label="{{c|06}|}", shape=record];
+    d [label="{{d|09}|}", shape=record];
+    e [label="{{e|14}|}", shape=record];
+    f [label="{{f|15}|}", shape=record];
+    g [label="{{g|16}|}", shape=record];
+    h [label="{{h|17}|}", shape=record];
+    05 -> a, b;
+    11 -> 05, c;
+}
+
+digraph G {
+    a [label="{{a|02}|}", shape=record];
+    b [label="{{b|03}|}", shape=record];
+    c [label="{{c|06}|}", shape=record];
+    d [label="{{d|09}|}", shape=record];
+    e [label="{{e|14}|}", shape=record];
+    f [label="{{f|15}|}", shape=record];
+    g [label="{{g|16}|}", shape=record];
+    h [label="{{h|17}|}", shape=record];
+    05 -> a, b;
+    11 -> 05, c;
+    20 -> 11, d;
+}
+
+digraph G {
+    a [label="{{a|02}|}", shape=record];
+    b [label="{{b|03}|}", shape=record];
+    c [label="{{c|06}|}", shape=record];
+    d [label="{{d|09}|}", shape=record];
+    e [label="{{e|14}|}", shape=record];
+    f [label="{{f|15}|}", shape=record];
+    g [label="{{g|16}|}", shape=record];
+    h [label="{{h|17}|}", shape=record];
+    05 -> a, b;
+    11 -> 05, c;
+    20 -> 11, d;
+    29 -> e, f;
+}
+
+digraph G {
+    a [label="{{a|02}|}", shape=record];
+    b [label="{{b|03}|}", shape=record];
+    c [label="{{c|06}|}", shape=record];
+    d [label="{{d|09}|}", shape=record];
+    e [label="{{e|14}|}", shape=record];
+    f [label="{{f|15}|}", shape=record];
+    g [label="{{g|16}|}", shape=record];
+    h [label="{{h|17}|}", shape=record];
+    05 -> a, b;
+    11 -> 05, c;
+    20 -> 11, d;
+    29 -> e, f;
+    33 -> g, h;
+}
+
+digraph G {
+    a [label="{{a|02}|}", shape=record];
+    b [label="{{b|03}|}", shape=record];
+    c [label="{{c|06}|}", shape=record];
+    d [label="{{d|09}|}", shape=record];
+    e [label="{{e|14}|}", shape=record];
+    f [label="{{f|15}|}", shape=record];
+    g [label="{{g|16}|}", shape=record];
+    h [label="{{h|17}|}", shape=record];
+    05 -> a, b;
+    11 -> 05, c;
+    20 -> 11, d;
+    29 -> e, f;
+    33 -> g, h;
+    49 -> 20, 29;
+}
+
+digraph G {
+    eg1 [shape=record, label="{{name|weight}|code}"]
+    eg2 [label="weight"]
+    a [label="{{a|02}|10110}", shape=record];
+    b [label="{{b|03}|10111}", shape=record];
+    c [label="{{c|06}|1010}", shape=record];
+    d [label="{{d|09}|100}", shape=record];
+    e [label="{{e|14}|110}", shape=record];
+    f [label="{{f|15}|111}", shape=record];
+    g [label="{{g|16}|00}", shape=record];
+    h [label="{{h|17}|01}", shape=record];
+    05 -> a, b;
+    11 -> 05, c;
+    20 -> 11, d;
+    29 -> e, f;
+    33 -> g, h;
+    49 -> 20, 29;
+    82 -> 33, 49;
+}

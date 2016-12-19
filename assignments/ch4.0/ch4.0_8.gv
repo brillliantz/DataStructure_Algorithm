@@ -1,0 +1,117 @@
+digraph G {
+    c1 [shape=record, label="{{c1|5}|}"]
+    c2 [shape=record, label="{{c2|25}|}"]
+    c3 [shape=record, label="{{c3|3}|}"]
+    c4 [shape=record, label="{{c4|6}|}"]
+    c5 [shape=record, label="{{c5|10}|}"]
+    c6 [shape=record, label="{{c6|11}|}"]
+    c7 [shape=record, label="{{c7|36}|}"]
+    c8 [shape=record, label="{{c8|4}|}"]
+}
+
+digraph G {
+    c1 [shape=record, label="{{c1|5}|}"]
+    c2 [shape=record, label="{{c2|25}|}"]
+    c3 [shape=record, label="{{c3|3}|}"]
+    c4 [shape=record, label="{{c4|6}|}"]
+    c5 [shape=record, label="{{c5|10}|}"]
+    c6 [shape=record, label="{{c6|11}|}"]
+    c7 [shape=record, label="{{c7|36}|}"]
+    c8 [shape=record, label="{{c8|4}|}"]
+    7 -> c3, c8;
+}
+
+digraph G {
+    c1 [shape=record, label="{{c1|5}|}"]
+    c2 [shape=record, label="{{c2|25}|}"]
+    c3 [shape=record, label="{{c3|3}|}"]
+    c4 [shape=record, label="{{c4|6}|}"]
+    c5 [shape=record, label="{{c5|10}|}"]
+    c6 [shape=record, label="{{c6|11}|}"]
+    c7 [shape=record, label="{{c7|36}|}"]
+    c8 [shape=record, label="{{c8|4}|}"]
+    7 -> c3, c8;
+    11 -> c1, c4;
+}
+
+digraph G {
+    c1 [shape=record, label="{{c1|5}|}"]
+    c2 [shape=record, label="{{c2|25}|}"]
+    c3 [shape=record, label="{{c3|3}|}"]
+    c4 [shape=record, label="{{c4|6}|}"]
+    c5 [shape=record, label="{{c5|10}|}"]
+    c6 [shape=record, label="{{c6|11}|}"]
+    c7 [shape=record, label="{{c7|36}|}"]
+    c8 [shape=record, label="{{c8|4}|}"]
+    7 -> c3, c8;
+    11 -> c1, c4;
+    17 -> 7, c5;
+}
+
+digraph G {
+    c1 [shape=record, label="{{c1|5}|}"]
+    c2 [shape=record, label="{{c2|25}|}"]
+    c3 [shape=record, label="{{c3|3}|}"]
+    c4 [shape=record, label="{{c4|6}|}"]
+    c5 [shape=record, label="{{c5|10}|}"]
+    c6 [shape=record, label="{{c6|11}|}"]
+    c7 [shape=record, label="{{c7|36}|}"]
+    c8 [shape=record, label="{{c8|4}|}"]
+    7 -> c3, c8;
+    11 -> c1, c4;
+    17 -> 7, c5;
+    22 -> 11, c6;
+}
+
+digraph G {
+    c1 [shape=record, label="{{c1|5}|}"]
+    c2 [shape=record, label="{{c2|25}|}"]
+    c3 [shape=record, label="{{c3|3}|}"]
+    c4 [shape=record, label="{{c4|6}|}"]
+    c5 [shape=record, label="{{c5|10}|}"]
+    c6 [shape=record, label="{{c6|11}|}"]
+    c7 [shape=record, label="{{c7|36}|}"]
+    c8 [shape=record, label="{{c8|4}|}"]
+    7 -> c3, c8;
+    11 -> c1, c4;
+    17 -> 7, c5;
+    22 -> 11, c6;
+    39 -> 17, 22;
+}
+
+digraph G {
+    c1 [shape=record, label="{{c1|5}|}"]
+    c2 [shape=record, label="{{c2|25}|}"]
+    c3 [shape=record, label="{{c3|3}|}"]
+    c4 [shape=record, label="{{c4|6}|}"]
+    c5 [shape=record, label="{{c5|10}|}"]
+    c6 [shape=record, label="{{c6|11}|}"]
+    c7 [shape=record, label="{{c7|36}|}"]
+    c8 [shape=record, label="{{c8|4}|}"]
+    7 -> c3, c8;
+    11 -> c1, c4;
+    17 -> 7, c5;
+    22 -> 11, c6;
+    39 -> 17, 22;
+    61 -> c2, c7;
+}
+
+digraph G {
+    eg1 [shape=record, label="{{name|weight}|code}"]
+    eg2 [label="weight"]
+    c1 [shape=record, label="{{c1|5}|0110}"]
+    c2 [shape=record, label="{{c2|25}|10}"]
+    c3 [shape=record, label="{{c3|3}|0010}"]
+    c4 [shape=record, label="{{c4|6}|0111}"]
+    c5 [shape=record, label="{{c5|10}|000}"]
+    c6 [shape=record, label="{{c6|11}|010}"]
+    c7 [shape=record, label="{{c7|36}|11}"]
+    c8 [shape=record, label="{{c8|4}|0011}"]
+    7 -> c3, c8;
+    11 -> c1, c4;
+    17 -> 7, c5;
+    22 -> 11, c6;
+    39 -> 17, 22;
+    61 -> c2, c7;
+    100 -> 39, 61;
+}
