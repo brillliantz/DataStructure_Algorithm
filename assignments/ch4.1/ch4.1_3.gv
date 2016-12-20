@@ -1,0 +1,56 @@
+digraph G {
+    graph [ordering="out"];
+    16;
+    16 -> 3, null0;
+    null0 [shape=point]
+}
+
+digraph G {
+    graph [ordering="out"];
+    7 -> 3, 16;
+}
+
+digraph G {
+    graph [ordering="out"];
+    7 -> 3, 16;
+    16 -> 11, null0;
+    null0 [shape=point]
+}
+
+digraph G {
+    graph [ordering="out"];
+    7 -> 3, 11;
+    11 -> 9, 16;
+}
+
+digraph G {
+    graph [ordering="out"];
+    11 -> 7, 16;
+    7 -> 3, 9;
+    16 -> null0, 28;
+    null0 [shape=point]
+}
+
+digraph G {
+    graph [ordering="out"];
+    11 -> 7, 18;
+    7 -> 3, 9;
+    18 -> 16, 28;
+}
+
+digraph G {
+    graph [ordering="out"];
+    11 -> 7, 18;
+    7 -> 3, 9;
+    18 -> 16, 28;
+    16 -> 14, null0;
+    null0 [shape=point]
+}
+
+digraph G {
+    graph [ordering="out"];
+    11 -> 7, 18;
+    7 -> 3, 9;
+    18 -> 15, 28;
+    15 -> 14, 16;
+}

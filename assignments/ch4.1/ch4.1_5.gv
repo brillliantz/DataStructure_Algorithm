@@ -1,0 +1,48 @@
+digraph G {
+    rec0 [shape=record, label="x\<17"]
+    rec1 [shape=record, label="17\<x\<94"]
+    rec2 [shape=record, label="94\<x\<154"]
+    rec3 [shape=record, label="154\<x\<170"]
+    rec4 [shape=record, label="170\<x\<275"]
+    rec5 [shape=record, label="275\<x\<503"]
+    rec6 [shape=record, label="503\<x\<509"]
+    rec7 [shape=record, label="509\<x\<512"]
+    rec8 [shape=record, label="512\<x\<553"]
+    rec9 [shape=record, label="553\<x\<612"]
+    rec10 [shape=record, label="612\<x\<677"]
+    rec11 [shape=record, label="677\<x\<765"]
+    rec12 [shape=record, label="765\<x\<897"]
+    rec13 [shape=record, label="897\<x\<908"]
+    rec14 [shape=record, label="x\>908"]
+
+    0 [label="17"]
+    1 [label="94"]
+    2 [label="154"]
+    3 [label="170"]
+    4 [label="275"]
+    5 [label="503"]
+    6 [label="509"]
+    7 [label="512"]
+    8 [label="553"]
+    9 [label="612"]
+    10 [label="677"]
+    11 [label="765"]
+    12 [label="897"]
+    13 [label="908"]
+
+    6 -> 2, 10;
+    2 -> 0, 4;
+    0 -> rec0, 1;
+    1 -> rec1, rec2;
+    4 -> 3, 5;
+    3 -> rec3, rec4;
+    5 -> rec5, rec6;
+
+    10 -> 8, 12;
+    8 -> 7, 9;
+    7 -> rec7, rec8;
+    9 -> rec9, rec10;
+    12 -> 11, 13;
+    11 -> rec11, rec12;
+    13 -> rec13, rec14;
+}

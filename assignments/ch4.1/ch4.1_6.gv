@@ -1,0 +1,8 @@
+digraph G {
+    Root -> left_subtree;
+    Root -> right_child [color=red];
+    left_subtree [shape=record]
+    right_child -> left_subtree2 [color=red];
+    right_child -> right_subtree;
+
+}
