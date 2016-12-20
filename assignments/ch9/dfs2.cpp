@@ -1,5 +1,5 @@
 /**
- * algo to print all cycyles in a directed graph.
+ * algo to print all cycyles in a directed graph, using DFS.
  */
 
 #include <iostream>
@@ -7,8 +7,6 @@
 #include <list>
 #include <deque>
 #include <vector>
-
-using namespace std;
 
 void print_cycle(std::deque<int> &d, int start);
 
@@ -21,7 +19,7 @@ class Graph
 
   private:
     int nv; // No. of vertices
-    list<int> *adj; // Pointer to an array containing adjacency lists
+    std::list<int> *adj; // Pointer to an array containing adjacency lists
     void is_cyclic_slave(int v, bool &flag,
             std::vector<bool> &visited, std::deque<int> &r_stack); // used by is_cyclic()
 };
@@ -29,7 +27,7 @@ class Graph
 Graph::Graph(int nv)
 {
     this->nv = nv;
-    adj = new list<int>[nv];
+    adj = new std::list<int>[nv];
 }
 
 void Graph::addEdge(int v, int w)
@@ -61,34 +59,30 @@ void Graph::is_cyclic_slave(int v, bool &flag,
 {
     std::cout << "slave visiting: " << v << std::endl;
 
-    if(!visited[v])
+    // Mark the current node as visited and part of recursion stack
+    visited[v] = true;
+    r_stack.push_back(v);
+
+    // Recur for all the vertices adjacent to this vertex
+    for (int &i : adj[v])
     {
-        // Mark the current node as visited and part of recursion stack
-        visited[v] = true;
-        r_stack.push_back(v);
+        std::cout << "    visiting "
+            << v << "'s adjacent " << i << std::endl;
 
-        // Recur for all the vertices adjacent to this vertex
-        for (int &i : adj[v])
-        {
-            std::cout << "    visiting "
-                << v << "'s adjacent " << i << std::endl;
-
-            bool in_stack =
-                !(std::find(std::begin(r_stack), std::end(r_stack), i)
-                 == std::end(r_stack));
-            if (!visited[i]) {
-                is_cyclic_slave(i, flag, visited, r_stack);
-            }
-            else if (in_stack) {
-                flag = true;
-                print_cycle(r_stack, i);
-            }
-            else {
-                std::cout << i << "visited, but not in stack!" << std::endl;
-            }
+        bool in_stack =
+            !(std::find(std::begin(r_stack), std::end(r_stack), i)
+             == std::end(r_stack));
+        if (!visited[i]) {
+            is_cyclic_slave(i, flag, visited, r_stack);
+        }
+        else if (in_stack) {
+            flag = true;
+            print_cycle(r_stack, i);
+        }
+        else {
+            std::cout << i << "visited, but not in stack!" << std::endl;
         }
     }
-    else std::cout << "else???" << std::endl;
 
     r_stack.pop_back();
 }
@@ -127,13 +121,9 @@ int main()
     g.addEdge(5, 6);
     g.addEdge(6, 7);
     g.addEdge(7, 6);
-
     std::cout << "Construction of graph completed." << std::endl;
 
     g.is_cyclic();
-    //if(g.is_cyclic())
-    //    cout << "Graph contains cycle" << std::endl;
-    //else
-    //    cout << "Graph doesn't contain cycle" << std::endl;
+
     return 0;
 }
