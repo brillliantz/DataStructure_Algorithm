@@ -313,8 +313,8 @@ bool unary(char c) {
 ### 7. 给定权值{ 15, 03, 14, 02, 06, 09, 16, 17 }, 构造相应的霍夫曼树,并计算它的带权外路径长度。
 
 #### Solution part 1 - construction of huffman tree
-- See attachment `ch4.7.gv` for source code; 
-- See attachment `ch4.7.gv.1.png` to `ch4.7.gv.8.png` for the complete solution. (If you can open `.ps` image, I recommend you use that instead of `.pnf` files)
+- See attachment `ch4.0_7.gv` for source code; 
+- See attachment `ch4.0_7.gv.1.png` to `ch4.0_7.gv.8.png` for the complete solution. (If you can open `.ps` image, I recommend you open that instead of `.pnf` files)
 
 #### Solution part 2 - calculation of weighted path length
 According to our result, we have:
