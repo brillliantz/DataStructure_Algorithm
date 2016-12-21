@@ -1,13 +1,22 @@
-﻿# ch4.1_all 
+# ch4.1_all 
 
 ### README
 
 
 ### 1. (a) Show the result of inserting 3, 1, 4, 6, 9, 2, 5, 7 into an initially empty binary search tree. (b) Show the result of deleting the root.
-#### Solution
-See `ch4.1_1_a.gv.png` and `ch4.1_1_b.gv.png`.
+#### Solution - a
+See `ch4.1_1_a.gv.png` 
+
+![ch4.1_1_a.gv.png](img/ch4.1_1_a.gv.png)
+
+#### solution - b
+
+See `ch4.1_1_b.gv.png`
+
+![ch4.1_1_b.gv.png](img/ch4.1_1_b.gv.png)
 
 ### 2. 写一递归函数实现在带索引的二叉搜索树( IndexBST) 中查找第 k 个小的元素。
+
 #### solution
 If implement as a function outside the class:
 ```c++
@@ -60,7 +69,24 @@ class BST {
 ### 3. 对一棵空的 AVL 树,分别画出插入关键码为 { 16 , 3 , 7 , 11 , 9 , 28 , 18 , 14 , 15} 后的 AVL 树。
 #### solution
 - See attachment `ch4.1_3.gv` for source code; 
+
 - See attachment `ch4.1_3.gv.1.png` to `ch4.1_3.gv.8.png` for the complete solution. (If you can open `.ps` image, I recommend you open `ch4.1_3.gv.ps` instead of `.pnf` files)
+
+  ![asdf](img/ch4.1_3.gv.1.png)
+
+  ![asdf](img/ch4.1_3.gv.2.png)
+
+  ![asdf](img/ch4.1_3.gv.3.png)
+
+  ![asdf](img/ch4.1_3.gv.4.png)
+
+  ![asdf](img/ch4.1_3.gv.5.png)
+
+  ![asdf](img/ch4.1_3.gv.6.png)
+
+  ![asdf](img/ch4.1_3.gv.7.png)
+
+  ![asdf](img/ch4.1_3.gv.8.png)
 
 
 ### 4. 设计算法检测一个二叉树是不是一个二叉搜索树 .
@@ -106,33 +132,145 @@ binary_search(const list<Comparable> &l, const Comparable &x) {
 see `ch4.1_5.gv.png` for the tree.
 #### solution -- average search length
 ***successful* cases:**
-The general formula for a $k$-level BST:
+Average search length for a $h$-level BST, in successful cases:
 $$
-\bar{L} = 2^0 * 1 + 2^1 * 2 + 2^2 * 3 + \dots + 2^{k-1} * k = k * 2^k - 2^k + 1 = (k-1) * 2^k + 1
-$$
-
-If there are n nodes, then at most there are $log_2(n)$ levels. So for a linear list with length $n$, the average length of search is:
-$$
-(log_2(n) - 1) * 2^{log_2(n)} + 1 \sim nlog(n)
+\text{ASL}_{\text{success}} = \frac{1}{n} (2^0 * 1 + 2^1 * 2 + 2^2 * 3 + \dots + 2^{h-1} * h) = \frac{1}{n}(h * 2^h - 2^h + 1) = \frac{1}{n}((h-1) * 2^h + 1)
 $$
 
+If there are $h$ levels, there are **at most** $2^h - 1$ nodes; Therefore if there are $n$ nodes, then **at least** there are $log_2(n+1)$ levels. Substitute $h$ with $log_2(n+1)$, we have:
 $$
-\text{ASL} = \frac{1}{n} \sum _{i=1} ^n l_i
-=\frac{1}{n} (2^0 * 1 + 2^1 * 2 + 2^2 * 3 + \dots + 2^{h-1} * h)
-=\frac{n+1}{n} log_2(n+1) - 1 \approx log_2(n+1) - 1
+\begin{align}
+\text{ASL}_{\text{success}} =
+&\frac{1}{n} [(log_2(n+1) - 1) * 2^{log_2(n+1)} + 1] 
+\\
+=& \frac{1}{n} [(n+1) log_2(n+1) - n] \\
+=&\frac{n+1}{n} log_2(n+1) - 1 \\
+\approx& log_2(n+1) - 1
+\end{align}
 $$
+
 ***unsuccessful* cases:**
-[clear explaination](http://stackoverflow.com/questions/24537366/average-complexity-of-binary-search-for-an-unsuccessful-search)
+
+
+We add 2 (1) new children to current leaves that have 0 (1) child. These new leaves stand for **failure cases**. Then we have $n+1$ new leaves. The average path legnth to reach them is:
+$$
+\begin{align}
+\text{ASL}_{\text{fail}} 
+\approx &\frac{1}{n+1} (h + h + h + \dots + h) \\
+=& \frac{1}{n+1} (log_2{n+1} + log_2{n+1} + \dots + log_2{n+1}) \\
+=& log_2(n+1)
+\end{align}
+$$
+
+All cases:
+$$
+\begin{align}
+\text{ASL} =& \frac{1}{n+ n+1} \left[ (n+1)log_2(n+1) - n + (n+1)log_2(n+1) \right] \\
+=& \frac{1}{2n+1} [ (2n+2)log_2(n+1) -n]\\
+\approx & log_2(n+1)
+\end{align}
+$$
+
 
 ### 6. 在一棵表示有序集 S 的二叉搜索树中 , 任意一条从根到叶结点的路径将 S 分为三部分 : 在该结点左边结点中的元素组成集合 S1; 在该路径上的结点 中的元素组成集合 S2; 在该路径右边结点中的元素组成集合 S3, S=S1US2US3. 若对于任意的 a S1, b S2, c S3, 是否总有 a<=b<=c? 为什 么 ?
 #### solution
-Yes. Proof:
+No. See a counter example:
+
+![ch4.1_6.png](img/ch4.1_6.gv.png)
+
+in which $n \in S_2$, $n+1 \in S_1$. However $n < n+1$.
 
 
 ### 7. 将关键码 DEC, FEB, NOV, OCT, JUL, SEP, AUG, APR, MAR, MAY, JUN, JAN 依次插入到一棵初始为空的 AVL 树中 , 画出每插入一个关键 码后的 AVL 树 , 并标明平衡旋转的类型 .
+#### solution
+see image `ch4.1_7.jpg`.
 
-### *8. 对于一个高度为 h 的 AVL 树 , 其最少结点数是多少 ? 反之 , 对于一个 有 n 个结点的 AVL 树 , 其最大高度是多少 ? 最小高度是多少 ? 
+![ch4.1_7.jpg](img/ch4.1_7.jpg)
+
+### 8. 对于一个高度为 h 的 AVL 树 , 其最少结点数是多少 ? 反之 , 对于一个 有 n 个结点的 AVL 树 , 其最大高度是多少 ? 最小高度是多少 ? 
+
+#### solution - minimum number of nodes in a $h$-height AVL tree
+
+We can solve this **recursively**. Let's denote the minimum number of nodes in a $h$-height tree by $f(h)$
+
+1. if $h=1$, then $f(1) = 1$
+2. if $h=2$, then $f(2) = 2$
+3. if $h \ge 3$, then we consider the two subtrees. Constraints on their heights include:  
+   - maximum height is $h-1$
+   - at least one of them is equally tall or taller than $h-1$
+   - maximum difference between their height is $1$  
+
+So their heights should be $h-1$ and $h-2$, respectively. Considering the requirement of minimum nodes, we have:
+$$
+f(h) = f(h-1) + f(h-2) + 1
+$$
+Let $g(h) = f(h) + 1$, then
+$$
+g(h) = f(h) + 1  = f(h-1) + f(h-2) + 1 + 1 = g(h-1) + g(h-2)
+$$
+
+
+Apparently, $g(h)$ is ***Fibonacci Series***. With $g(1) = 2, g(2) = 3$ we conclude that:
+$$
+f(h) = g(h) - 1 = \text{Fib}(h+2) - 1
+$$
+where $\text{Fib}(h)$ is the n-th fibonacci number (series start with 1, 1, 2, ...).
+
+#### solution - maximum height for an AVL tree with $n$ nodes -- method 1
+
+we know
+$$
+\text{Fib}(n) \approx \frac{1}{\sqrt{5}} \left( \frac{1 + \sqrt{5}}{2} \right)^{n+3}
+$$
+i.e.
+$$
+f(n) \approx \frac{1}{\sqrt{5}} \left( \frac{1 + \sqrt{5}}{2} \right)^{n+3}
+$$
+therefore
+$$
+h \approx 1.44 log(n)
+$$
+
+#### solution - maximum height for an AVL tree with $n$ nodes -- method 2
+
+$$
+\begin{align}
+f(h) &= f(h-1) + f(h-2) + 1 \\
+f(h-1) & = f(h-2) + f(h-3) + 1 \\
+\Longrightarrow \\
+f(h) &= f(n-2) + f(n-3) + 1 + f(n-2) + 1 > 2 f(n-2)\\
+\Longrightarrow \\
+f(h) &> 2^{h/2} \\
+\Longrightarrow \\
+h &< 2log(f(h))
+\end{align}
+$$
+
+i.e.
+$$
+h < 2 log(n)
+$$
+
+#### solution - minimum height for an AVL tree with $n$ nodes
+
+the tree must be a *complete* binary tree.
+
+A $n$-level *full* binary tree has $2^{n} - 1$ nodes. So the minimum height is:
+$$
+\text{ceil}(log_2(n+1))
+$$
+where **ceil** means ROUND UP.
+
+
 
 ### 9. 分别 delete 50 ,40 in the following 3 阶 B- 树 .
 
+#### solution
+
+**see the image under problem 10!!**
+
 ### 10. 分别画出插入 65, 15, 40, 30 后的 3 阶 B- 树。
+
+#### solution
+
+![ch4.1_9and10](img/ch4.1_9and10.jpg)

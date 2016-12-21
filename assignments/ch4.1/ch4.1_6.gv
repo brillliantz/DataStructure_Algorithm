@@ -1,8 +1,14 @@
 digraph G {
-    Root -> left_subtree;
-    Root -> right_child [color=red];
-    left_subtree [shape=record]
-    right_child -> left_subtree2 [color=red];
-    right_child -> right_subtree;
+    graph [ordering="out"]
+    n -> subtree1;
+    n -> "n+4" [color=red, label="red stands for the line"];
+    "n+4" -> "n+2" [color=red];
+    "n+4" -> subtree6;
+    "n+2" -> "n+1";
+    "n+2" -> "n+3" [color=red];
+    "n+1" -> subtree2, subtree3;
+    "n+3" -> subtree4, subtree5;
+    subtree1, subtree2, subtree3 [shape=record]
+    subtree4, subtree5, subtree6 [shape=record]
 
 }
