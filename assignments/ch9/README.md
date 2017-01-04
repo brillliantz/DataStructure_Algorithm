@@ -25,6 +25,11 @@ digraph G {
 ```
 There are 3 loops: `0-1-2-3-5-6-0`, `0-1-2-4-5-6-0` and `6-7-6`.
 
+#### (possiblely bad) option 2: using 3-color DFS
+see `CycleTest2.cpp` in [notes here](http://web.eecs.utk.edu/~leparker/Courses/CS302-fall05/Notes/GraphIntro/).
+
+I debug the code in my brain. It seems it is not able to find **all** cycles. Because it will return when finding a cycle, without checking other edges.
+
 #### some possible choices to be researched
 - DAG: directed acyclic graph
 - strongly connected components
